@@ -62,7 +62,7 @@ BuiltList<T> deserializeBuiltList<T extends Object>(Object json) {
     return listOfDynamic.cast<T>().toBuiltList();
   } on DeserializationError catch (_) {
     print(
-        '>>>>> Try to adding specified type, eg: deserializeBuiltListNullable<MyModel>(json)');
+        '>>>>> Try to add specified type, eg: deserializeBuiltListNullable<MyModel>(json)');
     rethrow;
   }
 }
@@ -76,7 +76,7 @@ BuiltList<T?> deserializeBuiltListNullable<T extends Object>(Object json) {
     return listOfDynamic.cast<T?>().toBuiltList();
   } on DeserializationError catch (_) {
     print(
-        '>>>>> Try to adding specified type, eg: deserializeBuiltList<MyModel>(json)');
+        '>>>>> Try to add specified type, eg: deserializeBuiltList<MyModel>(json)');
     rethrow;
   }
 }
