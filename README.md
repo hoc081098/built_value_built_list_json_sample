@@ -1,4 +1,6 @@
-# `built_value` sample: parse `JSON` to `BuiltList` dynamically.
+# built_value_built_list_json_sample
+ 
+`built_value` sample: parse `JSON` to `BuiltList` dynamically.
 
 ## Author: [Petrus Nguyễn Thái Học](https://github.com/hoc081098)
 
@@ -31,7 +33,7 @@ final List<_BuilderFactory> _factories = [
 ];
 ```
 
-### Step 3. Use `deserializeBuiltList` and `deserializeBuiltListNullable` to parse json to `BuiltList`. 
+### Step 3. Use `deserializeBuiltList` and `deserializeBuiltListNullable` to parse `JSON` to `BuiltList`. 
 
 ```dart
 abstract class MyModel implements Built<MyModel, MyModelBuilder> {
