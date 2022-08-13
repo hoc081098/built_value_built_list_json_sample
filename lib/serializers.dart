@@ -1,4 +1,5 @@
 import 'package:built_value/serializer.dart';
+import 'package:built_value/built_value.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:built_collection/built_collection.dart';
 
@@ -7,13 +8,15 @@ import 'my_model_two.dart';
 
 part 'serializers.g.dart';
 
-const List<Type> types = [
+/// Register your [Built] classes here.
+const List<Type> _types = [
   MyModel,
   MyModelTwo,
 ];
 
-final List<BuilderFactory> factories = [
-  BuilderFactory(
+/// Register your [_BuilderFactory]s here.
+final List<_BuilderFactory> _factories = [
+  _BuilderFactory(
     FullType(BuiltMap, [
       FullType(String),
       FullType(int),
@@ -22,22 +25,16 @@ final List<BuilderFactory> factories = [
   ),
 ];
 
-@SerializersFor(types)
-final Serializers serializers = (_$serializers.toBuilder()
-      ..addPlugin(StandardJsonPlugin())
-      ..addTypes())
-    .build();
-
-class BuilderFactory {
+class _BuilderFactory {
   final FullType type;
   final dynamic Function() function;
 
-  BuilderFactory(this.type, this.function);
+  _BuilderFactory(this.type, this.function);
 }
 
 extension on SerializersBuilder {
   void addTypes() {
-    for (final t in types) {
+    for (final t in _types) {
       addBuilderFactory(
         FullType(BuiltList, [FullType(t)]),
         () => ListBuilder<dynamic>(),
@@ -47,11 +44,21 @@ extension on SerializersBuilder {
         () => ListBuilder<dynamic>(),
       );
     }
-    for (final f in factories) {
+    for (final f in _factories) {
       addBuilderFactory(f.type, f.function);
     }
   }
 }
+
+///
+/// PUBLIC API
+///
+
+@SerializersFor(_types)
+final Serializers serializers = (_$serializers.toBuilder()
+      ..addPlugin(StandardJsonPlugin())
+      ..addTypes())
+    .build();
 
 BuiltList<T> deserializeBuiltList<T extends Object>(Object json) {
   try {

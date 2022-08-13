@@ -3,7 +3,7 @@ import 'package:test_built_value/my_model_two.dart';
 import 'package:test_built_value/serializers.dart';
 
 void demo1() {
-  var json = [
+  final json = [
     {
       'items': <int?>[1, 2, null, 3, 3]
     },
@@ -16,14 +16,14 @@ void demo1() {
   ];
 
   print('---1---');
-  var items = deserializeBuiltList<MyModel>(json);
+  final items = deserializeBuiltList<MyModel>(json);
   print(items);
   print(items.runtimeType);
   print('--------\n');
 }
 
 void demo2() {
-  var json = [
+  final json = [
     {
       'map': {
         '1': {
@@ -51,14 +51,14 @@ void demo2() {
   ];
 
   print('---2---');
-  var items = deserializeBuiltList<MyModelTwo>(json);
+  final items = deserializeBuiltList<MyModelTwo>(json);
   print(items);
   print(items.runtimeType);
   print('-------\n');
 }
 
 void demo3() {
-  var json = [
+  final json = [
     {
       'items': <int?>[1, 2, null, 3, 3]
     },
@@ -72,14 +72,14 @@ void demo3() {
   ];
 
   print('---3---');
-  var items = deserializeBuiltListNullable<MyModel>(json);
+  final items = deserializeBuiltListNullable<MyModel>(json);
   print(items);
   print(items.runtimeType);
   print('-------\n');
 }
 
 void demo4() {
-  var json = [
+  final json = [
     {
       'map': {
         '1': {
@@ -108,7 +108,7 @@ void demo4() {
   ];
 
   print('---4---');
-  var items = deserializeBuiltListNullable<MyModelTwo>(json);
+  final items = deserializeBuiltListNullable<MyModelTwo>(json);
   print(items);
   print(items.runtimeType);
   print('-------\n');

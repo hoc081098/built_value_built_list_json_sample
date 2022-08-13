@@ -34,7 +34,7 @@ class _$MyModelSerializer implements StructuredSerializer<MyModel> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -56,10 +56,10 @@ class _$MyModel extends MyModel {
   final BuiltList<int?> items;
 
   factory _$MyModel([void Function(MyModelBuilder)? updates]) =>
-      (new MyModelBuilder()..update(updates)).build();
+      (new MyModelBuilder()..update(updates))._build();
 
   _$MyModel._({required this.items}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(items, 'MyModel', 'items');
+    BuiltValueNullFieldError.checkNotNull(items, r'MyModel', 'items');
   }
 
   @override
@@ -82,7 +82,7 @@ class _$MyModel extends MyModel {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MyModel')..add('items', items))
+    return (newBuiltValueToStringHelper(r'MyModel')..add('items', items))
         .toString();
   }
 }
@@ -117,7 +117,9 @@ class MyModelBuilder implements Builder<MyModel, MyModelBuilder> {
   }
 
   @override
-  _$MyModel build() {
+  MyModel build() => _build();
+
+  _$MyModel _build() {
     _$MyModel _$result;
     try {
       _$result = _$v ?? new _$MyModel._(items: items.build());
@@ -128,7 +130,7 @@ class MyModelBuilder implements Builder<MyModel, MyModelBuilder> {
         items.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'MyModel', _$failedField, e.toString());
+            r'MyModel', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -137,4 +139,4 @@ class MyModelBuilder implements Builder<MyModel, MyModelBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
