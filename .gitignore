@@ -7,3 +7,9 @@ build/
 
 # Directory created by dartdoc
 doc/api/
+/.idea/.gitignore
+/.idea/libraries/Dart_SDK.xml
+/.idea/modules.xml
+/.idea/test_built_value.iml
+/.idea/vcs.xml
+/.idea/libraries/Dart_Packages.xml
