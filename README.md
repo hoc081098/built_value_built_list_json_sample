@@ -33,6 +33,18 @@ final List<_BuilderFactory> _factories = [
 
 ### Step 3. Use `deserializeBuiltList` and `deserializeBuiltListNullable` to parse json to `BuiltList`. 
 
+```dart
+abstract class MyModel implements Built<MyModel, MyModelBuilder> {
+  BuiltList<int?> get items;
+
+  MyModel._();
+
+  factory MyModel([void Function(MyModelBuilder) updates]) = _$MyModel;
+
+  [...]
+}
+```
+
 #### `BuiltList<T> deserializeBuiltList<T extends Object>(Object json)`
 
 ```dart
